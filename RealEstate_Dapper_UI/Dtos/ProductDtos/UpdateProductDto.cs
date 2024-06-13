@@ -1,8 +1,6 @@
-﻿using System.Runtime.InteropServices;
-
-namespace RealEstate_Dapper_UI.Dtos.ProductDtos
+﻿namespace RealEstate_Dapper_UI.Dtos.ProductDtos
 {
-    public class ResultProductDtos
+    public class UpdateProductDto
     {
         public int productID { get; set; }
         public string title { get; set; }
