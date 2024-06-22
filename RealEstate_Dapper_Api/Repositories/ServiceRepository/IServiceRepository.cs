@@ -1,5 +1,4 @@
-﻿using RealEstate_Dapper_Api.Dtos.CategoryDtos;
-using RealEstate_Dapper_Api.Dtos.ServiceDtos;
+﻿using RealEstate_Dapper_Api.Dtos.ServiceDtos;
 
 namespace RealEstate_Dapper_Api.Repositories.ServiceRepository
 {
@@ -10,6 +9,6 @@ namespace RealEstate_Dapper_Api.Repositories.ServiceRepository
         void DeleteService(int id);
         void UpdateService(UpdateServiceDto updateServiceDto);
 
-        Task<GetByIDServiceDto> GetByIDService(int id);
+        Task<GetByIdServiceDto> GetByIDService(int id);
     }
 }

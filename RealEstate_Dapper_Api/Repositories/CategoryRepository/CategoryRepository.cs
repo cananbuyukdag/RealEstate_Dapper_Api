@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using RealEstate_Dapper_Api.Dtos.CategoryDtos;
+using RealEstate_Dapper_Api.Dtos.ServiceDtos;
 using RealEstate_Dapper_Api.Models.DapperContext;
 
 namespace RealEstate_Dapper_Api.Repositories.CategoryRepository
@@ -45,14 +46,14 @@ namespace RealEstate_Dapper_Api.Repositories.CategoryRepository
             }
         }
 
-        public async Task<GetByIDServiceDto> GetCategory(int id)
+        public async Task<GetByIdServiceDto> GetCategory(int id)
         {
             string query = "Select * From Category Where CategoryID=@CategoryID";
             var parameters = new DynamicParameters();
             parameters.Add("@CategoryID", id);
             using(var connection = _context.CreateConnection()) 
             {
-                var values = await connection.QueryFirstOrDefaultAsync<GetByIDServiceDto>(query, parameters);
+                var values = await connection.QueryFirstOrDefaultAsync<GetByIdServiceDto>(query, parameters);
                 return values;
             }
         }

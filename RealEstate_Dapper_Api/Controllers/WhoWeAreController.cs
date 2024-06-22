@@ -28,7 +28,7 @@ namespace RealEstate_Dapper_Api.Controllers
             _whoWeAreRepository.CreateWhoWeAre(createWhoWeAreDto);
             return Ok("Hakkımızda Alanı Başarılı Bir Şekilde Eklendi");
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteWhoWeAre(int id)
         {
             _whoWeAreRepository.DeleteWhoAre(id);

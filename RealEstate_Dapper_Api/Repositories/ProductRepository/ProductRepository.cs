@@ -11,6 +11,28 @@ namespace RealEstate_Dapper_Api.Repositories.ProductRepository
         {
             _context = context;
         }
+
+        public async void DealOfTheDayChangeStatusTrue(int id)
+        {
+            string query = "Update Product set DealOfTheDay=1 where ProductID=@productID";
+            var parameters = new DynamicParameters();
+            parameters.Add("@productID", id);
+            using (var connection = _context.CreateConnection())
+            {
+                await connection.ExecuteAsync(query, parameters);
+            }
+        }
+        public async void DealOfTheDayChangeStatusFalse(int id)
+        {
+            string query = "Update Product set DealOfTheDay=0 where ProductID=@productID";
+            var parameters = new DynamicParameters();
+            parameters.Add("@productID", id);
+            using (var connection = _context.CreateConnection())
+            {
+                await connection.ExecuteAsync(query, parameters);
+            }
+        }
+
         public async Task<List<ResultProductDto>> GetAllProductAsync()
         {
             string query = "Select * from Product";
@@ -22,7 +44,7 @@ namespace RealEstate_Dapper_Api.Repositories.ProductRepository
 
         public async Task<List<ResultProductWithCategoryDto>> GetAllProductWithCategoryAsync()
         {
-            string query = "Select ProductID, Title, Price, City,District, CategoryName, CoverImage, Type, Address from Product inner join Category on Product.ProductCategory=Category.CategoryID";
+            string query = "Select ProductID, Title, Price, City,District, DealOfTheDay,CategoryName, CoverImage, Type, Address from Product inner join Category on Product.ProductCategory=Category.CategoryID";
             using (var connection = _context.CreateConnection())
             {
                 var values = await connection.QueryAsync<ResultProductWithCategoryDto>(query);
