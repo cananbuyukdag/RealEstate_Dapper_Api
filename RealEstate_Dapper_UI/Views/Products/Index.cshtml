@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Admin/Index.cshtml";
+    int count = 0;
 }
 
 <div class="container-fluid pt-4 px-4">
@@ -14,6 +15,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
+                                <th scope="col">İlan ID</th>
                                 <th scope="col">İlan Başlığı</th>
                                 <th scope="col">Şehir</th>
                                 <th scope="col">İlçe</th>
@@ -29,22 +31,25 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
+                                count++;
                                 <tr>
-                                    <th scope="row">@item.productID</th>
+                                    <th scope="row">@count</th>
+                                    <td>@item.productID</td>
                                     <td>@item.title</td>
                                     <td>@item.city</td>
                                     <td>@item.district</td>
                                     <td>@item.categoryName</td>
                                     <td>@item.price</td>
                                     <td>@item.type</td>
-                                    <td><a href="/Product/DeleteProduct/@item.productID" class="btn btn-outline-danger">Sil</a></td>
-                                    <td><a href="/Product/UpdateProduct/@item.productID" class="btn btn-outline-success">Güncelle</a></td>
-                                    <td><a href="/Product/ProductDetail/@item.productID" class="btn btn-outline-info">Sitede Gör</a></td>
+                                    <td><a href="/Products/DeleteProduct/@item.productID" class="btn btn-outline-danger">Sil</a></td>
+                                    <td><a href="/Products/UpdateProduct/@item.productID" class="btn btn-outline-success">Güncelle</a></td>
+                                    <td><a href="/Products/ProductDetail/@item.productID" class="btn btn-outline-info">Sitede Gör</a></td>
                                     <td>
-                                        @if(item.dealOfTheDay == true){
-                                        <a href="/Product/ProductDetail/@item.productID" class="btn btn-outline-secondary">Aktif Yap</a>
-                                        }else{
-                                            <a href="/Product/ProductDetail/@item.productID" class="btn btn-outline-warning">Pasif Yap</a>
+                                        @if(item.dealOfTheDay == false){
+                                            <a href="/Products/DealOfTheDayChangeStatusTrue/@item.productID" class="btn btn-outline-secondary">Aktif Yap</a>
+                                        }
+                                        @if (item.dealOfTheDay == true){
+                                            <a href="/Products/DealOfTheDayChangeStatusFalse/@item.productID" class="btn btn-outline-warning">Pasif Yap</a>
                                         }
                                         </td>
 
@@ -53,7 +58,7 @@
                             }
                         </tbody>
                     </table>
-                    <a href="/Product/CreateProduct" class="btn btn-outline-info">Yeni İlan Girişi</a>
+                    <a href="/Products/CreateProduct" class="btn btn-outline-info">Yeni İlan Girişi</a>
                 </div>
             </div>
         </div>
