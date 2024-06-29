@@ -38,5 +38,11 @@ namespace RealEstate_Dapper_Api.Controllers
             _productRepository.DealOfTheDayChangeStatusFalse(id);
             return Ok("Günün Favorisinden Kaldırırldı");
         }
+        [HttpGet("Last5ProductList")] 
+        public async Task<IActionResult> Last5ProductList()
+        {
+            var values = await _productRepository.GetLast5ProductsAsync();
+            return Ok(values);
+        }
     }
 }
