@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<body>
+    <div class="container-fluid pt-4 px-4">
+        <div>
+            <div class="row g-4">
+                <div class="col-sm-12 col-xl-6">
+                    <div class="bg-light text-center rounded p-4">
+                        <div class="d-flex align-items-center justify-content-between mb-4">
+                            <canvas id="myChart" style="width:100%;max-width:500px"></canvas>
+                            <script>
+                                const xValues = ["Ankara", "İzmir", "İstanbul", "Adana", "Trabzon"];
+                                const yValues = [55, 49, 44, 24, 15];
+                                const barColors = ["#5AB2FF", "#A0DEFF", "#3572EF", "#006989", "#BED7DC"];
+
+                                new Chart("myChart", {
+                                    type: "bar",
+                                    data: {
+                                        labels: xValues,
+                                        datasets: [{
+                                            backgroundColor: barColors,
+                                            data: yValues
+                                        }]
+                                    },
+                                    options: {
+                                        legend: { display: false },
+                                        title: {
+                                            display: true,
+                                            text: "Şehir - İlan İstatistiği"
+                                        }
+                                    }
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-xl-6">
+                    <div class="bg-light text-center rounded p-4">
+                        <div class="d-flex align-items-center justify-content-between mb-4">
+                            <h6 class="mb-0">Salse & Revenue</h6>
+                            <a href="">Show All</a>
+                        </div>
+                        <canvas id="salse-revenue"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
+

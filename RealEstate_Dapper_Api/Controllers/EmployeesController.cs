@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RealEstate_Dapper_Api.Dtos.CategoryDtos;
 using RealEstate_Dapper_Api.Dtos.EmployeeDtos;
@@ -6,8 +7,8 @@ using RealEstate_Dapper_Api.Repositories.EmployeeRepositories;
 
 namespace RealEstate_Dapper_Api.Controllers
 {
+   
     [Route("api/[controller]")]
-    [ApiController]
     public class EmployeesController : ControllerBase
     {
         private readonly IEmployeeRepository _employeeRepository;
