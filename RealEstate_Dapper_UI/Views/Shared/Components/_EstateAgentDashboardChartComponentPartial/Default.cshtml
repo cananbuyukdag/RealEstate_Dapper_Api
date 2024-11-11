@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model List<ResultEstateAgentDashboardChartDto>
+<!DOCTYPE html>
 <html>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 <body>
@@ -9,9 +10,18 @@
                     <div class="bg-light text-center rounded p-4">
                         <div class="d-flex align-items-center justify-content-between mb-4">
                             <canvas id="myChart" style="width:100%;max-width:500px"></canvas>
+                            @{
+                                var xValues = new List<string>();
+                                var yValues = new List<int>();
+
+                            foreach (var item in Model)
+                            {
+                                xValues.Add(item.City);
+                                yValues.Add(item.CityCount);
+                            }
                             <script>
-                                const xValues = ["Ankara", "İzmir", "İstanbul", "Adana", "Trabzon"];
-                                const yValues = [55, 49, 44, 24, 15];
+                                const xValues = @Html.Raw(Json.Serialize(xValues));
+                                const yValues = @Html.Raw(Json.Serialize(yValues));
                                 const barColors = ["#5AB2FF", "#A0DEFF", "#3572EF", "#006989", "#BED7DC"];
 
                                 new Chart("myChart", {
@@ -32,16 +42,48 @@
                                     }
                                 });
                             </script>
+                            }
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-12 col-xl-6">
                     <div class="bg-light text-center rounded p-4">
                         <div class="d-flex align-items-center justify-content-between mb-4">
-                            <h6 class="mb-0">Salse & Revenue</h6>
-                            <a href="">Show All</a>
+                            <canvas id="myChart1" style="width:100%;max-width:500px"></canvas>
+                            @{
+                                var xValues1 = new List<string>();
+                                var yValues1 = new List<int>();
+
+                                foreach (var item in Model)
+                                {
+                                    xValues1.Add(item.City);
+                                    yValues1.Add(item.CityCount);
+                                }
+                                <script>
+                                    const xValues1 = @Html.Raw(Json.Serialize(xValues1));
+                                    const yValues1 = @Html.Raw(Json.Serialize(yValues1));
+                                    const barColors2 = ["#5AB2FF", "#A0DEFF", "#3572EF", "#006989", "#BED7DC"];
+
+                                    new Chart("myChart1", {
+                                        type: "bar",
+                                        data: {
+                                            labels: xValues1,
+                                            datasets: [{
+                                                backgroundColor: barColors,
+                                                data: yValues1
+                                            }]
+                                        },
+                                        options: {
+                                            legend: { display: false },
+                                            title: {
+                                                display: true,
+                                                text: "Şehir - İlan İstatistiği"
+                                            }
+                                        }
+                                    });
+                                </script>
+                            }
                         </div>
-                        <canvas id="salse-revenue"></canvas>
                     </div>
                 </div>
             </div>
