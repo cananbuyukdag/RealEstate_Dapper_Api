@@ -1,10 +1,9 @@
-﻿namespace RealEstate_Dapper_Api.Dtos.ProductDetailDtos
+﻿namespace RealEstate_Dapper_UI.Dtos.PropertyImageDtos
 {
-    public class GetProductImageByProductIdDto
+    public class PropertyImageDto
     {
         public int ProductImageId { get; set; }
         public int ProductId { get; set; }
         public string ImageUrl { get; set; }
-
     }
 }

@@ -112,7 +112,7 @@ namespace RealEstate_Dapper_Api.Repositories.ProductRepository
 
         public async Task<GetProductByProductIdDto> GetProductByProductId(int id)
         {
-            string query = "Select ProductID, Title, Price, City,District, DealOfTheDay,CategoryName, CoverImage, Type, Address from Product inner join Category on Product.ProductCategory=Category.CategoryID where ProductId = @productID";
+            string query = "Select ProductID, Title, Price, City,District, DealOfTheDay,CategoryName,AdvertisementDate, CoverImage, Type, Address from Product inner join Category on Product.ProductCategory=Category.CategoryID where ProductId = @productID";
             var parameters = new DynamicParameters();
             parameters.Add("@productID", id);
             using (var connection = _context.CreateConnection())
@@ -122,14 +122,14 @@ namespace RealEstate_Dapper_Api.Repositories.ProductRepository
             }
         }
 
-        public async Task<GetProductDetailByIdDto> GetProductDetailByProductId(int id)
+        public async Task<GetProductImageByProductIdDto> GetProductDetailByProductId(int id)
         {
             string query = "Select * from ProductDetails where ProductId = @productID";
             var parameters = new DynamicParameters();
             parameters.Add("@productID", id);
             using (var connection = _context.CreateConnection())
             {
-                var values = await connection.QueryAsync<GetProductDetailByIdDto>(query, parameters);
+                var values = await connection.QueryAsync<GetProductImageByProductIdDto>(query, parameters);
                 return values.FirstOrDefault();
             }
         }
