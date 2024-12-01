@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using RealEstate_Dapper_Api.Dtos.ProductDetailDtos;
+using RealEstate_Dapper_Api.Dtos.ProductImageDtos;
 using RealEstate_Dapper_Api.Dtos.ServiceDtos;
 using RealEstate_Dapper_Api.Models.DapperContext;
 

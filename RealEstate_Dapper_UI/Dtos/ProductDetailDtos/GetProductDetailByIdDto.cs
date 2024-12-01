@@ -10,6 +10,7 @@
         public string BuildYear { get; set; }
         public decimal Price { get; set; }
         public string Location { get; set; }
+        public int RoomCount { get; set; }
         public string VideoUrl { get; set; }
         public int ProductId { get; set; }
         public DateTime AdvertisementDate { get; set; }

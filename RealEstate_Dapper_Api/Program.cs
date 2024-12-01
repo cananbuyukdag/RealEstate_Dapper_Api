@@ -11,10 +11,12 @@ using RealEstate_Dapper_Api.Repositories.MessageRepositories;
 using RealEstate_Dapper_Api.Repositories.PopularLocationRepositories;
 using RealEstate_Dapper_Api.Repositories.ProductImageRepositories;
 using RealEstate_Dapper_Api.Repositories.ProductRepository;
+using RealEstate_Dapper_Api.Repositories.PropertyAmenityRepositories;
 using RealEstate_Dapper_Api.Repositories.ServiceRepository;
 using RealEstate_Dapper_Api.Repositories.StatisticsRepositories;
 using RealEstate_Dapper_Api.Repositories.TestimonialRepositories;
 using RealEstate_Dapper_Api.Repositories.ToDoListRepositories;
+using RealEstate_Dapper_Api.Repositories.UserRepositories;
 using RealEstate_Dapper_Api.Repositories.WhoWeAreRepository;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -37,6 +39,8 @@ builder.Services.AddTransient<IChartRepository, ChartRepository>();
 builder.Services.AddTransient<ILast5ProductsRespository, Last5ProductsRepository>();
 builder.Services.AddTransient<IMessageRepository, MessageRepository>();
 builder.Services.AddTransient<IProductImageRepository, ProductImageRepository>();
+builder.Services.AddTransient<IUserRepository, UserRepository>();
+builder.Services.AddTransient<IPropertyAmenityRepository, PropertyAmenityRepository>();
 
 builder.Services.AddCors(opt =>
 {
